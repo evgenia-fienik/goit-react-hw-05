@@ -1,0 +1,42 @@
+.movieDetails{
+border-bottom: 0.3px solid rgb(159, 156, 156);
+box-shadow: 0 3px rgba(153, 146, 146, 0.3);
+}
+
+.movieHeader{
+display: flex;
+gap: 15px;
+border-bottom: 0.3px solid rgb(159, 156, 156);
+box-shadow: 0 3px rgba(153, 146, 146, 0.3);
+}
+
+
+.btn{
+
+margin-bottom: 3px;
+ display: flex;
+ gap: 3px;
+ border: 1px solid gray;
+ border-radius: 5px;
+left: 0;
+}
+
+.img{
+max-width: 450px ;
+max-height: 350px;
+margin-bottom: 7px;
+}
+
+
+.ul{
+    list-style: none;
+ 
+}
+
+.link{
+    text-decoration: none;
+
+}
+.link:hover{
+color:orange
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useLocation} from 'react-router-dom';
 import MovieList from '../../components/MovieList/MovieList';
 import axios from "axios";
 import { API_KEY, BASE_URL } from "../../services/api";
@@ -12,13 +12,17 @@ export default function MoviesPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const searchQuery = searchParams.get('query') ?? '';
+  const location = useLocation();
 
   useEffect(() => {
-    if (searchQuery) {
-      setQuery(searchQuery);
+    if (!searchQuery) {
       fetchMovies(searchQuery);
+    } else {
+      setMovies([]);
     }
-  }, [searchQuery]);
+      setQuery('');
+      fetchMovies(searchQuery);
+  }, [searchQuery, location.pathname]);
 
   const fetchMovies = async (searchQuery) => {
     if (!searchQuery) return;
@@ -40,9 +44,7 @@ export default function MoviesPage() {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearchParams({ query });
-    fetchMovies(query);
-    
+    setSearchParams({ query }); 
   };
 
   return (
